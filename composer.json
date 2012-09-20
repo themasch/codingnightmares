@@ -1,0 +1,17 @@
+{
+    "name": "codenight/website",
+    "description": "website bundle for coding-nightmares.com",
+    "minimum-stability": "dev",
+    "authors": [
+        {
+            "name": "Mark Schmale",
+            "email": "masch@masch.it"
+        }
+    ],
+    "require": {
+    },
+    "autoload": {
+        "psr-0": { "maschit\\CodingNightmares\\WebsiteBundle": "" }
+    }, 
+    "target-dir": "maschit/CodingNightmares/WebsiteBundle"
+}
