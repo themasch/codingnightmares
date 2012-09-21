@@ -1,0 +1,29 @@
+
+article 
+{
+  margin-top: 1em;
+}
+
+article header
+{
+  height: 40px;
+  line-height: 40px;
+}
+
+article header .votes
+{
+  line-height: 40px;
+  float: right;
+}
+
+article header h3
+{
+  float: left;
+  padding:0;
+  margin:0;
+}
+
+table.code 
+{
+  width: 100%;
+}

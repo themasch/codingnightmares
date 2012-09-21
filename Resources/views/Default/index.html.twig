@@ -1,1 +1,18 @@
-Hello {{ name }}!
+{% extends "maschitCodingNightmaresWebsiteBundle::layout.html.twig" %}
+
+{% block content %}
+
+  <article class="">
+    <header>
+      <h3>Testeintrag</h3>
+      <div class="date" style="float:right;margin-left:1em;">{{ "now"|date('d.m.Y') }}</div>
+      <div class="votes">
+        42 <i class="icon-white icon-thumbs-up"></i> | <i class="icon-white icon-thumbs-down"></i> 23
+      </div>
+    </header>
+      {{code|raw}}
+    <footer>
+      Tags: doof, test
+    </footer>
+  </article>
+{% endblock %}
