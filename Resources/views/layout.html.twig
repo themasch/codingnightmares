@@ -14,7 +14,16 @@
         <a class="brand" href="#">coding-nightmares.com</a>
         <ul class="nav">
         </ul>
+        <ul class="nav pull-right">
+          {% if user is not defined %}
+            <li><a href="#login">login</a></li>
+            <li><a href="#register">create account</a></li>
+          {% endif %}
+        </ul>
       </div>
+    </div>
+    <div class="popup-register popup hidden-popup">
+        REG REG
     </div>
     <div class="container-fluid" style="width:800px;margin:auto;">
       {% block content %}
@@ -23,5 +32,8 @@
     </div>
     <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/1.8.0/jquery-1.8.0.min.js"></script>
     <script src="{{ asset("bundles/maschitcodingnightmareswebsite/bootstrap/js/bootstrap.min.js") }}"></script>
+    <script src="{{ asset("bundles/maschitcodingnightmareswebsite/js/main.js") }}"></script>
+    <script>
+    </script>
   </body>
 </html> 
