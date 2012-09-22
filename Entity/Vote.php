@@ -42,6 +42,12 @@ class Vote
      */
     private $post;
 
+    /**
+     * @var string $ip_hash
+     * 
+     * @ORM\Column(name="iphash", type="string")
+     */
+    private $ip_hash;
 
     /**
      * Get id
@@ -97,6 +103,29 @@ class Vote
     public function getValue()
     {
         return $this->value;
+    }
+
+    /**
+     * Set ip_hash
+     *
+     * @param string $ipHash
+     * @return Vote
+     */
+    public function setIpHash($ipHash)
+    {
+        $this->ip_hash = $ipHash;
+    
+        return $this;
+    }
+
+    /**
+     * Get ip_hash
+     *
+     * @return string 
+     */
+    public function getIpHash()
+    {
+        return $this->ip_hash;
     }
 
     /**
