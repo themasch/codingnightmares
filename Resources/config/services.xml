@@ -4,8 +4,14 @@
     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
     xsi:schemaLocation="http://symfony.com/schema/dic/services http://symfony.com/schema/dic/services/services-1.0.xsd">
 
-    <!--
     <parameters>
+        <parameter key="bcrypt_encoder.class">maschit\CodingNightmares\WebsiteBundle\Service\BCryptEncoder</parameter>
+    </parameters>
+    <services>
+        <service id="bcrypt_encoder" class="%bcrypt_encoder.class%">
+        </service>
+    </services>
+    <!--
         <parameter key="maschit_coding_nightmares_website.example.class">maschit\CodingNightmares\WebsiteBundle\Example</parameter>
     </parameters>
 
