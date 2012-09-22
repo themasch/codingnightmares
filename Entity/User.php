@@ -3,6 +3,7 @@
 namespace maschit\CodingNightmares\WebsiteBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Security\Core\User\UserInterface;
 
 /**
  * maschit\CodingNightmares\WebsiteBundle\Entity\User
@@ -10,7 +11,7 @@ use Doctrine\ORM\Mapping as ORM;
  * @ORM\Table()
  * @ORM\Entity
  */
-class User
+class User implements UserInterface
 {
     /**
      * @var integer $id
@@ -29,11 +30,12 @@ class User
     private $mail;
 
     /**
-     * @var string $password
+     * @var string $password hashed password
      *
-     * @ORM\Column(name="password", type="string", length=100)
+     * @ORM\Column(name="password", type="string", length="100")
      */
     private $password;
+
 
     /**
      * @var \DateTime $joined
@@ -41,6 +43,7 @@ class User
      * @ORM\Column(name="joined", type="datetime")
      */
     private $joined;
+
 
     /**
      * @var boolean $is_moderator
@@ -63,6 +66,22 @@ class User
      */
     private $verified;
 
+    /**
+     * @var string $salt
+     * 
+     * @ORM\Column(name="salt", type="string")
+     */
+    private $salt;
+
+
+    public function __construct()
+    {
+        $this->salt = '$2y$07$'.substr(md5(uniqid(null, true)), 0, 20).'$';
+        $this->verify_secret = sha1(uniqid(null, true).microtime(true));
+        $this->verified = false;
+        $this->is_moderator = false;
+        $this->setJoined(new \DateTime());
+    }
 
     /**
      * Get id
@@ -106,7 +125,6 @@ class User
     public function setPassword($password)
     {
         $this->password = $password;
-    
         return $this;
     }
 
@@ -210,5 +228,38 @@ class User
     public function getVerified()
     {
         return $this->verified;
+    }
+
+    public function getSalt()
+    {
+        return $this->salt;
+    }
+
+    /**
+     * @inheritDoc
+     */
+    public function getUsername()
+    {
+        return $this->getMail();
+    }
+
+    /**
+     * @inheritDoc
+     */
+    public function getRoles()
+    {
+        return $this->getIsModerator() ? array('ROLE_ADMIN') : array('ROLE_USER');
+    }
+
+    /**
+     * @inheritDoc
+     */
+    public function eraseCredentials()
+    {
+    }
+
+    public function isEqualTo(UserInterface $user)
+    {
+        return $user->getUsername() === $this->mail;
     }
 }

@@ -5,12 +5,13 @@ namespace maschit\CodingNightmares\WebsiteBundle\Controller;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
+use maschit\CodingNightmares\WebsiteBundle\Form\RegistrationForm;
 
         
 class DefaultController extends Controller
 {
   /**
-   * @Route("/")
+   * @Route("/", name="index")
    * @Template()
    */
   public function indexAction()
@@ -20,6 +21,11 @@ class DefaultController extends Controller
     $g->set_header_type(GESHI_HEADER_PRE_TABLE);
     $g->set_overall_class('code');
     $g->enable_line_numbers(GESHI_NORMAL_LINE_NUMBERS);
-    return array('code' => $g->parse_code(), 'css' => $g->get_stylesheet());
+
+    $regform = $this->createForm(new RegistrationForm());
+    return array(
+      'code' => $g->parse_code(), 
+      'reg_form' => $regform->createView(),
+      'includeForms' => 'true');
   }
 }

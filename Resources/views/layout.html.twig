@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html>
   <head>
@@ -15,15 +16,20 @@
         <ul class="nav">
         </ul>
         <ul class="nav pull-right">
-          {% if user is not defined %}
+          {% if not is_granted('ROLE_USER')  %}
             <li><a href="#login">login</a></li>
             <li><a href="#register">create account</a></li>
+          {% else %}
+            <li><a>Welcome, {{ app.user.username }}</a></li>
+            <li><a href="{{ path('logout') }}">logout</a></li>
           {% endif %}
         </ul>
       </div>
     </div>
-    {% include "maschitCodingNightmaresWebsiteBundle:Elements:popup-register.html.twig" %}
-    {% include "maschitCodingNightmaresWebsiteBundle:Elements:popup-login.html.twig" %}
+    {% if includeForms is defined and includeForms == true %}
+    {% include "maschitCodingNightmaresWebsiteBundle:Elements:popup-register.html.twig" with { "reg_form": reg_form, "hidden": true} %}
+    {% include "maschitCodingNightmaresWebsiteBundle:Elements:popup-login.html.twig" with { "hidden": true} %}
+    {% endif %}
     <div class="container-fluid" style="width:800px;margin:auto;">
       {% block content %}
         Kein Inhalt da O.o

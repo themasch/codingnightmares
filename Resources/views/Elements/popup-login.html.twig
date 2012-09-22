@@ -1,16 +1,16 @@
-<div class="popup-login popup hidden-popup">
-  <form class="form-horizontal">
+<div class="popup-login popup{% if hidden is defined %} hidden-popup{% endif %}">
+  <form class="form-horizontal" method="post" action="{{ path('login_check') }}">
     <legend>log in</legend>
     <div class="control-group">
-      <label class="control-label" for="inputEmail">E-Mail</label>
+      <label class="control-label" for="mail">E-Mail</label>
       <div class="controls">
-        <input type="text" id="inputEmail" placeholder="E-Mail">
+        <input type="email" name="_username" id="mail">
       </div>
     </div>
     <div class="control-group">
-      <label class="control-label" for="inputPassword">Password</label>
+      <label class="control-label" for="password">Password</label>
       <div class="controls">
-        <input type="password" id="inputPassword" placeholder="Password">
+        <input type="password" name="_password" id="password">
       </div>
     </div>
     <div class="control-group">

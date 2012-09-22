@@ -1,28 +1,14 @@
-<div class="popup-register popup hidden-popup">
-  <form class="form-horizontal">
+{% form_theme reg_form 'maschitCodingNightmaresWebsiteBundle:Form:BootstrapTheme.html.twig' %}
+<div class="popup-register popup{% if hidden is defined %} hidden-popup{% endif %}">
+  <form class="form-horizontal" method="post" action="{{ path('register') }}">
     <legend>new Account</legend>
-    <div class="control-group">
-      <label class="control-label" for="inputEmail">E-Mail</label>
-      <div class="controls">
-        <input type="text" id="inputEmail" placeholder="E-Mail">
-      </div>
-    </div>
-    <div class="control-group">
-      <label class="control-label" for="inputPassword">Password</label>
-      <div class="controls">
-        <input type="password" id="inputPassword" placeholder="Password">
-      </div>
-    </div>
-    <div class="control-group">
-      <label class="control-label" for="inputPasswordC">confirm Password</label>
-      <div class="controls">
-        <input type="password" id="inputPasswordC" placeholder="Password">
-      </div>
-    </div>
+    {{ form_row(reg_form.email) }}
+    {{ form_row(reg_form.password) }}
     <div class="control-group">
       <div class="controls">
         <button type="submit" class="btn">create account</button>
       </div>
     </div>
+    {{ form_rest(reg_form) }}
   </form>
 </div>
