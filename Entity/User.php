@@ -32,7 +32,7 @@ class User implements UserInterface
     /**
      * @var string $password hashed password
      *
-     * @ORM\Column(name="password", type="string", length="100")
+     * @ORM\Column(name="password", type="string", length=100)
      */
     private $password;
 
