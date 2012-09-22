@@ -27,3 +27,13 @@ table.code
 {
   width: 100%;
 }
+
+.votes .icon-thumbs-down:hover 
+{
+  color: #faa;
+}
+
+.votes .icon-thumbs-up:hover 
+{
+  color: #afa;
+}
