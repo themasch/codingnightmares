@@ -28,6 +28,12 @@ table.code
   width: 100%;
 }
 
+.votes i 
+{
+  font-size: 120%;
+  cursor: pointer;
+}
+
 .votes .icon-thumbs-down:hover 
 {
   color: #faa;
