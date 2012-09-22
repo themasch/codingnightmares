@@ -63,12 +63,12 @@ body {
   width: 380px;
   padding: 10px;
   margin-left: -200px;
-  height: 200px;
+  max-height: 400px;
   background-color: #444;
 
   -webkit-box-shadow: 0 0 10px #000;
   box-shadow: 0 0 10px #000;
-  
+
   -webkit-border-bottom-right-radius: 10px;
   -webkit-border-bottom-left-radius: 10px;
 
@@ -91,5 +91,14 @@ body {
 }
 
 .popup.hidden-popup {
-  top: -200px;
+  top: -400px;
+}
+
+
+/** forms **/
+.form-horizontal .control-label {
+  width: 120px;
+}
+.form-horizontal .controls {
+  margin-left: 140px;
 }
