@@ -12,16 +12,19 @@
   <body>
     <div class="navbar navbar-static-top navbar-inverse">
       <div class="navbar-inner">
-        <a class="brand" href="#">coding-nightmares.com</a>
+        <a class="brand" href="#">Coding Nightmares</a>
         <ul class="nav">
         </ul>
         <ul class="nav pull-right">
           {% if not is_granted('ROLE_USER')  %}
-            <li><a href="#login">login</a></li>
-            <li><a href="#register">create account</a></li>
+            <li><a href="{{ path("login") }}" class="btn-login">login</a></li>
+            <li><a href="{{ path("register") }}" class="btn-register">create account</a></li>
           {% else %}
+            {% if is_granted('ROLE_ADMIN') %}
+            <li><a href="#admin">ROTFELADMIN</a></li>
+            {% endif %}
             <li><a>Welcome, {{ app.user.username }}</a></li>
-            <li><a href="{{ path('logout') }}">logout</a></li>
+            <li><a href="{{ path("logout") }}">logout</a></li>
           {% endif %}
         </ul>
       </div>
@@ -36,6 +39,12 @@
       {% endblock %}
     </div>
     <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/1.8.0/jquery-1.8.0.min.js"></script>
+    <script>
+      if(!window.jQuery) 
+      { var path ="{{ asset("bundles/maschitcodingnightmareswebsite/js/jquery.min.js") }}";
+        document.write('</'+ 'script><script src="' + path +'">' ); }
+    </script>
+
     <script src="{{ asset("bundles/maschitcodingnightmareswebsite/bootstrap/js/bootstrap.min.js") }}"></script>
     <script src="{{ asset("bundles/maschitcodingnightmareswebsite/js/main.js") }}"></script>
     <script>
