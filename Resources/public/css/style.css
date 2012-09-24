@@ -23,6 +23,11 @@ article header h3
   margin:0;
 }
 
+article header h3 a
+{
+  color: inherit;
+}
+
 table.code 
 {
   width: 100%;
@@ -48,7 +53,7 @@ table.code
 .navbar-static-top {
   position: absolute;
   z-index: 100;
-  top: 0px;
+  top: 0;
 }
 
 body {
@@ -90,8 +95,19 @@ body {
   transition-duration: .5s;
 }
 
-.popup.hidden-popup {
+.hidden-popup {
   top: -400px;
+}
+
+/** tags **/
+article footer ul {
+  list-style-type: none;
+  display: inline;
+  padding: 0;
+  margin: 0;
+}
+article footer ul li {
+  display: inline;
 }
 
 

@@ -1,10 +1,15 @@
 <div class="popup-login popup{% if hidden is defined %} hidden-popup{% endif %}">
   <form class="form-horizontal" method="post" action="{{ path('login_check') }}">
     <legend>log in</legend>
+    {% if error is defined %}
+    <div class="alert alert-error">
+      {{ error.message }}
+    </div>
+    {% endif %}
     <div class="control-group">
       <label class="control-label" for="mail">E-Mail</label>
       <div class="controls">
-        <input type="email" name="_username" id="mail">
+        <input type="email" name="_username" id="mail"{% if last_username is defined %} value="{{last_username}}"{% endif %}>
       </div>
     </div>
     <div class="control-group">
