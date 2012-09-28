@@ -14,15 +14,19 @@
       <div class="navbar-inner">
         <a class="brand" href="#">Coding Nightmares</a>
         <ul class="nav">
+            {% if is_granted('ROLE_USER') %}
+            <li><a href="#/create">create</a></li>
+            {% endif %}
+            {% if is_granted('ROLE_ADMIN') %}
+            <li><a href="#/moderate">moderation</a></li>
+            <li><a href="#/user">manage users</a></li>
+            {% endif %}
         </ul>
         <ul class="nav pull-right">
           {% if not is_granted('ROLE_USER')  %}
             <li><a href="{{ path("login") }}" class="btn-login">login</a></li>
             <li><a href="{{ path("register") }}" class="btn-register">create account</a></li>
           {% else %}
-            {% if is_granted('ROLE_ADMIN') %}
-            <li><a href="#admin">ROTFELADMIN</a></li>
-            {% endif %}
             <li><a>Welcome, {{ app.user.username }}</a></li>
             <li><a href="{{ path("logout") }}">logout</a></li>
           {% endif %}
