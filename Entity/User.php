@@ -215,8 +215,7 @@ class User implements UserInterface
      */
     public function setVerified($verified)
     {
-        $this->verified = $verified;
-    
+        $this->verified = $verified;    
         return $this;
     }
 
