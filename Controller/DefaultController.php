@@ -36,26 +36,10 @@ class DefaultController extends Controller
    * @Template()
    */
   public function indexAction()
-  {    
-
-    // @TODO: posts from database
-    $g = new \GeSHi(file_get_contents(__FILE__), 'php');
-    $g->enable_classes();
-    $g->set_header_type(GESHI_HEADER_DIV);
-    $g->set_overall_class('code');
-    $g->enable_line_numbers(GESHI_NORMAL_LINE_NUMBERS);
-    // @TODO: geshi as a twig extension (filter)
-    // post.content|geshi(code.lang.name)
-    $lang = new Language();
-    $lang->setName('php');
-    $post = new Post();
-    $post->setTitle("bad symfony2 controller");
-    $post->setLang($lang);
-    $post->setDateAdded(new \DateTime());
-    $post->setContent(file_get_contents(__FILE__));
+  { 
+    $posts = $this->em->getRepository('maschit\\CodingNightmares\\WebsiteBundle\\Entity\\Post')->findAll();
     return array(
-      'posts' => [$post, $post], 
-      'code' => $g->parse_code(), 
+      'posts' => $posts, 
       'reg_form' => $this->createForm(new RegistrationForm())->createView(),
       'includeForms' => 'true');
   }
@@ -92,10 +76,23 @@ class DefaultController extends Controller
         if(strlen($tag) < 2) continue;
         $tagObj = $tagRepo->getTag($tag);
       }
+      $this->em->persist($post);
+      $this->em->flush($post);
+
       return new RedirectResponse($this->router->generate('index'));
 
     } else {
       return array( 'form' => $form->createView() );
     }
   }
+
+  /**
+   * @Route("/login_check", name="login_check")
+   */
+  public function loginCheckAction() {}
+
+  /**
+   * @Route("/logout", name="logout")
+   */
+  public function logoutAction() {}
 }
