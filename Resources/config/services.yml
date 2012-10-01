@@ -5,3 +5,28 @@ services:
     class: maschit\CodingNightmares\WebsiteBundle\Twig\GeSHiExtension
     tags:
         -  { name: twig.extension }
+
+security:
+    encoders:
+        maschit\CodingNightmares\WebsiteBundle\Entity\User:
+          id: bcrypt_encoder
+
+    role_hierarchy:
+        ROLE_ADMIN:       ROLE_USER
+        ROLE_SUPER_ADMIN: [ROLE_USER, ROLE_ADMIN, ROLE_ALLOWED_TO_SWITCH]
+
+    providers:
+      main: 
+        entity: { class: maschit\CodingNightmares\WebsiteBundle\Entity\User, property: mail }
+
+
+    firewalls:
+        secured_area:
+            pattern:    ^/
+            anonymous: ~
+            form_login:
+                login_path:  /login
+                check_path:  /login_check
+            logout:
+                path:   /logout
+                target: /
