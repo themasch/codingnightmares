@@ -1,0 +1,14 @@
+{% extends "maschitCodingNightmaresWebsiteBundle::layout.html.twig" %}
+{% form_theme form 'maschitCodingNightmaresWebsiteBundle:Form:BootstrapTheme.html.twig' %}
+
+{% block content %}
+  <form class="form-horizontal new-post-form" method="post" action="{{path('create')}}">
+    <legend>new Post</legend>
+    {{ form_rest(form)}}
+    <div class="control-group">
+      <div class="controls">
+        <button type="submit" class="btn">create account</button>
+      </div>
+    </div>
+  </form>
+{% endblock %}
