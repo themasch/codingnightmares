@@ -6,9 +6,9 @@ use Doctrine\ORM\Mapping as ORM;
 
 /**
  * maschit\CodingNightmares\WebsiteBundle\Entity\Tag
- *
+ * 
  * @ORM\Table()
- * @ORM\Entity
+ * @ORM\Entity(repositoryClass="maschit\CodingNightmares\WebsiteBundle\Entity\TagRepository")
  */
 class Tag
 {
