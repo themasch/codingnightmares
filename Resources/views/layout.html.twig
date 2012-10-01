@@ -15,7 +15,7 @@
         <a class="brand" href="#">Coding Nightmares</a>
         <ul class="nav">
             {% if is_granted('ROLE_USER') %}
-            <li><a href="#/create">create</a></li>
+            <li><a href="{{ path("create") }}">create</a></li>
             {% endif %}
             {% if is_granted('ROLE_ADMIN') %}
             <li><a href="#/moderate">moderation</a></li>

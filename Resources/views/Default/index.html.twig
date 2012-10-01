@@ -2,15 +2,16 @@
 
 {% block content %}
 {% for post in posts %}
-  <article class="">
+  <article data-post-id="{{post.id}}">
     <header>
       <h3><a href="#post/bla">{{post.title}}</a></h3>
-      <div class="date" style="float:right;margin-left:1em;">{{ post.dateAdded|date('d.m.Y') }}</div>
+      <div class="date" style="float:right;margin-left:1em;">{{ post.dateAdded|date('d.m.Y') }}</div>{# 
+      @TODO: [translation] pick date format according to perferedLanguage #}
       <div class="votes">
         42 <i class="icon-thumbs-up" title="funny"></i> | <i class="icon-thumbs-down" title="not funny"></i> 23
       </div>
     </header>
-    <div class="code-container">
+    <div class="code-container well">
       {{code|raw}}
     </div>
     <footer>
