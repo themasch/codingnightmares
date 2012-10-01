@@ -1,0 +1,7 @@
+services:
+  bcrypt_encoder:
+    class: maschit\CodingNightmares\WebsiteBundle\Service\BCryptEncoder
+  geshi_extension:
+    class: maschit\CodingNightmares\WebsiteBundle\Twig\GeSHiExtension
+    tags:
+        -  { name: twig.extension }
