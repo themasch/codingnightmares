@@ -28,9 +28,18 @@ article header h3 a
   color: inherit;
 }
 
-table.code 
+.code-container 
 {
-  width: 100%;
+  padding-bottom: 0;
+  padding-top: 0.5em;
+}
+
+.code 
+{
+  padding-left: 1.5em;
+  white-space: nowrap;
+  overflow: hidden;
+
 }
 
 .votes i 
@@ -118,3 +127,9 @@ article footer ul li {
 .form-horizontal .controls {
   margin-left: 140px;
 }
+
+.new-post-form input,
+.new-post-form textarea {
+  width: 500px;
+}
+
