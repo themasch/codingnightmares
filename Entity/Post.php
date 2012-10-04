@@ -63,7 +63,16 @@ class Post
      */
     private $moderator;
 
+    /**
+     * @ORM\ManyToMany(targetEntity="Tag", inversedBy="posts")
+     * @ORM\JoinTable(name="posts_tags")
+     */
+    private $tags;
 
+    public function __construct() 
+    {
+        $this->tags = new \Doctrine\Common\Collections\ArrayCollection();
+    }
     /**
      * Get id
      *
@@ -187,6 +196,21 @@ class Post
     public function getLang()
     {
         return $this->lang;
+    }
+
+    public function addTag(\maschit\CodingNightmares\WebsiteBundle\Entity\Tag $tag)
+    {
+        $this->tags->add($tag);
+    }
+
+    public function removeTag(\maschit\CodingNightmares\WebsiteBundle\Entity\Tag $tag)
+    {
+        $this->tags->removeElement($tag);
+    }
+
+    public function getTags()
+    {
+        return $this->tags;
     }
 
     /**

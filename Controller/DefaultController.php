@@ -75,6 +75,7 @@ class DefaultController extends Controller
         $tag = trim($tag);
         if(strlen($tag) < 2) continue;
         $tagObj = $tagRepo->getTag($tag);
+        $post->addTag($tagObj);
       }
       $this->em->persist($post);
       $this->em->flush($post);

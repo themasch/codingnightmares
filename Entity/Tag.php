@@ -28,6 +28,17 @@ class Tag
      */
     private $name;
 
+    /**
+     * 
+     * @ORM\ManyToMany(targetEntity="Post", mappedBy="tags")
+     */
+    private $posts;
+
+    public function __construct() 
+    {
+        $this->users = new \Doctrine\Common\Collections\ArrayCollection();
+    }
+
 
     /**
      * Get id
@@ -48,7 +59,7 @@ class Tag
     public function setName($name)
     {
         $this->name = $name;
-    
+
         return $this;
     }
 

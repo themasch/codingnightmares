@@ -15,10 +15,11 @@
       {{post.content|geshi('php')|raw}}
     </div>
     <footer>
-      Tags: 
+      Tags:
         <ul>
-          <li><a href="#/tag/doof">doof</a>,</li>
-          <li><a href="#/tag/test">test</a></li>
+        {% for tag in post.tags %}
+          <li><a href="#/tag/{{tag.name}}">{{tag.name}}</a></li>
+        {% endfor %}
         </ul>
     </footer>
   </article>
